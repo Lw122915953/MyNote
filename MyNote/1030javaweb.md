@@ -194,3 +194,17 @@
 * session存储数据在服务端，cookie在客户端，
 * session没有数据大小限制，cookie有
 * session数据安全，cookie相对不安全
+
+# 四、JSP
+
+## 1、九大内置对象
+
+* pageContext：当前页面共享数据
+* request：一次请求访问的多个资源（转发）
+* session：一次会话的多个请求间
+* application：所有用户间共享数据
+* response：响应对象
+* page：当前页面
+* out：输出对象，数据输出到页面上
+* config：Servlet的配置对象
+* exception：异常对象
