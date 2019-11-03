@@ -18,3 +18,50 @@
   1. @Value ：注入普通类型属性
   2. @Resource ：注入对象类型
   3. @Autowired ：注入对象类型，默认按照类型注入。结合@Qualifier注解完成按名称的注入
+
+# 二、手写简单工厂
+
+~~~java
+package com.bianyiit.practice01.g;
+
+public class Test01 {
+    public static void main(String[] args) {
+        FactoryBean factoryBean = new FactoryBean();
+        Fruit fruit = factoryBean.getInstance("com.bianyiit.practice01.g.Orange");
+        fruit.eat();
+    }
+}
+
+class FactoryBean {
+    public Fruit getInstance(String string) {
+        Fruit fruit = null;
+        try {
+            fruit = (Fruit) Class.forName(string).newInstance();
+            return fruit;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+}
+
+interface Fruit {
+    public void eat();
+}
+
+class Apple implements Fruit {
+
+    @Override
+    public void eat() {
+        System.out.println("吃Apple");
+    }
+}
+
+class Orange implements Fruit {
+    @Override
+    public void eat() {
+        System.out.println("吃Orange");
+    }
+}
+~~~
+
