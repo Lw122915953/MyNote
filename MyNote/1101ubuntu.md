@@ -131,9 +131,13 @@ find . -type f -name '*.sh' | xargs grep 'your_string'
 find . -type f -name '*.sh' | xargs grep -i 'your_string'
 ~~~
 
+## 8.权限操作
 
+~~~java
+#r:read就是读权限     --数字4表示
+#w:write就是写权限    --数字2表示
+#x:excute就是执行权限 --数字1表示
 
-
-
-
+sudo chmod 777 file
+~~~
 
