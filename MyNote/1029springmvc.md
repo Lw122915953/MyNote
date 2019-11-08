@@ -187,3 +187,57 @@ public class CustomIntecepter1 implements HandlerInterceptor {
 
 ![1572363081544](C:\Users\dell\AppData\Roaming\Typora\typora-user-images\1572363081544.png)
 
+# 六、静态资源过滤
+
+~~~java
+<!-- 配置静态资源 -->
+<mvc:resources location="/static/" mapping="/static/**"/>
+
+ 
+
+说明：
+location元素：表示webapp目录下（即服务器根目录）的static包下的所有文件；
+mapping元素：表示以/static开头的所有请求路径，如/static/a 或者/static/a/b；
+ 
+该配置的作用是：DispatcherServlet不会拦截以/static开头的所有请求路径，并当作静态资源交由Servlet处理；
+ 
+实例：
+    当我们在项目中需要引入js,css,json等资源文件时，而你在web.xml中刚好这样配置了拦截规则
+    
+    
+    <servlet>
+    <servlet-name>controller</servlet-name>
+    <servlet-class>
+        org.springframework.web.servlet.DispatcherServlet
+    </servlet-class>
+     <init-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:spring-mvc-controller.xml
+        </param-value>
+    </init-param>
+</servlet>
+<servlet-mapping>
+    <servlet-name>controller</servlet-name>
+    <url-pattern>/</url-pattern>  //配置成'/'即出了jsp文件外其他都拦截，'/*' 即拦截所有
+</servlet-mapping>
+~~~
+
+然后 当在页面上引入js,css等文件时，springMvc会拦截这些文件 。然后 你的页面就好丑了。。
+ 项目目录：
+
+　 　　![img](https://images2015.cnblogs.com/blog/740292/201704/740292-20170421212914259-400135196.png)
+
+在页面上这样应用就可以了
+
+~~~java
+ <link rel="stylesheet" type="text/css" href="static/easyui/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="static/easyui/themes/icon.css"/>
+
+　<script src="static/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+~~~
+
+
+
+
+
