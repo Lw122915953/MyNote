@@ -1,4 +1,4 @@
-# 一、安装gcc-c++
+# 一、安装gcc-c++(基于CentOS01)
 
 ~~~java
 yum -y install gcc-c++
@@ -353,4 +353,32 @@ systemctl restart iptables.service
    }
    ~~~
 
-5. 运行该测试文件
+   ## 十三、
+
+   ~~~java
+   #查看存储位置
+   store_path0=/usr/local/fastdfs/FastDFS/storage
+   cd data
+   cd 00
+   cd 00
+   ls
+   #使用root用户运行
+#运行
+   /usr/bin/fdfs_storaged /etc/fdfs/storage.conf
+/usr/bin/fdfs_trackerd /etc/fdfs/tracker.conf
+   
+#进入目录
+   cd  /usr/local/nginx/sbin
+   #启动
+   ./nginx
+   
+   #查看是否运行成功
+   ps -ef | grep fdfs
+   ps -ef | grep nginx
+   ~~~
+   
+   
+   
+   
+   
+   
